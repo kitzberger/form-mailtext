@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.0" xmlns:t3="http://typo3.org/schemas/xliff">
+    <file source-language="en" datatype="plaintext" original="EXT:form_mailtext/Resources/Private/Language/locallang.xlf" date="2020-03-13T20:15:32Z" product-name="form_mailtext">
+        <header/>
+        <body>
+            <trans-unit id="tt_content.finishersDefinition.EmailToReceiver.message.label" resname="tt_content.finishersDefinition.EmailToReceiver.message.label" xml:space="preserve">
+                <source>Mail text</source>
+            </trans-unit>
+            <trans-unit id="formEditor.elements.Form.finisher.EmailToReceiver.editor.message.label" resname="formEditor.elements.Form.finisher.EmailToReceiver.editor.message.label" xml:space="preserve">
+                <source>Mail text</source>
+            </trans-unit>
+            <trans-unit id="tt_content.finishersDefinition.EmailToSender.message.label" resname="tt_content.finishersDefinition.EmailToSender.message.label" xml:space="preserve">
+                <source>Mail text</source>
+            </trans-unit>
+            <trans-unit id="formEditor.elements.Form.finisher.EmailToSender.editor.message.label" resname="formEditor.elements.Form.finisher.EmailToSender.editor.message.label" xml:space="preserve">
+                <source>Mail text</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

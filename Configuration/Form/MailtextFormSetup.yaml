@@ -1,0 +1,32 @@
+TYPO3:
+  CMS:
+    Form:
+      mixins:
+        # Extra field 'message' in finisher config in form module
+        formElementMixins:
+          formEmailFinisherMixin:
+            editors:
+              220:
+                identifier: 'message'
+                templateName: 'Inspector-TextEditor'
+                label: 'formEditor.elements.Form.finisher.EmailToSender.editor.message.label'
+                propertyPath: 'options.message'
+                enableFormelementSelectionButton: true
+                propertyValidators:
+                  10: 'NotEmpty'
+                  20: 'FormElementIdentifierWithinCurlyBracesInclusive'
+        # Extra field 'message' in finisher config in form plugin
+        FormEngineEmailMixin:
+          elements:
+            message:
+              label: 'tt_content.finishersDefinition.EmailToSender.message.label'
+              config:
+                type: 'text'
+                enableRichtext: true
+                eval: 'required'
+        # Custom EmailFinisher that handles message field
+        finishersEmailMixin:
+          implementationClassName: 'Kitzberger\FormMailtext\Domain\Finishers\EmailFinisher'
+          options:
+            templateRootPaths:
+              20: 'EXT:form_mailtext/Resources/Private/Frontend/Templates/Finishers/Email/'
