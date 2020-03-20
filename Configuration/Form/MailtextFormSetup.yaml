@@ -1,6 +1,19 @@
 TYPO3:
   CMS:
     Form:
+      prototypes:
+        standard:
+          finishersDefinition:
+            EmailToSender:
+              formEditor:
+                predefinedDefaults:
+                  options:
+                    message: "Hi, here's your input: {variables}"
+            EmailToReceiver:
+              formEditor:
+                predefinedDefaults:
+                  options:
+                    message: "Hi, here's the users input: {variables}"
       mixins:
         # Extra field 'message' in finisher config in form module
         formElementMixins:
@@ -14,7 +27,6 @@ TYPO3:
                 enableFormelementSelectionButton: true
                 propertyValidators:
                   10: 'NotEmpty'
-                  20: 'FormElementIdentifierWithinCurlyBracesInclusive'
         # Extra field 'message' in finisher config in form plugin
         FormEngineEmailMixin:
           elements:
