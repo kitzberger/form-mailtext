@@ -9,14 +9,15 @@ class EmailFinisher extends \TYPO3\CMS\Form\Domain\Finishers\EmailFinisher
 {
     /**
      * @param FormRuntime $formRuntime
+     * @param string $format
      * @return StandaloneView
      * @throws FinisherException
      */
-    protected function initializeStandaloneView(FormRuntime $formRuntime): StandaloneView
+    protected function initializeStandaloneView(FormRuntime $formRuntime, string $format): StandaloneView
     {
-    	$standaloneView = parent::initializeStandaloneView($formRuntime);
+        $standaloneView = parent::initializeStandaloneView($formRuntime, $format);
 
-    	$standaloneView->assign('message', $this->parseOption('message'));
+        $standaloneView->assign('message', $this->parseOption('message'));
 
         return $standaloneView;
     }
