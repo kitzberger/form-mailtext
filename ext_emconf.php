@@ -1,7 +1,7 @@
 <?php
 $EM_CONF[$_EXTKEY] = [
 	'title' => 'Form: Mailtexts via plugin',
-	'description' => '',
+	'description' => 'This extension enhances the Email finishers of EXT:form by a new field "Mail text" (message) that allows the editor to define the mail text within the form plugin in the backend.',
 	'category' => 'system',
 	'state' => 'stable',
 	'uploadfolder' => 0,
