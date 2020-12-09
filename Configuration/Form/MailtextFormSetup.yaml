@@ -5,8 +5,6 @@ TYPO3:
         standard:
           finishersDefinition:
             EmailToSender:
-              # Custom EmailFinisher that handles message field
-              implementationClassName: 'Kitzberger\FormMailtext\Domain\Finishers\EmailFinisher'
               options:
                 templateRootPaths:
                   20: 'EXT:form_mailtext/Resources/Private/Frontend/Templates/Finishers/Email/'
@@ -24,8 +22,6 @@ TYPO3:
                   options:
                     message: "Hi, here's your input: {variables}"
             EmailToReceiver:
-              # Custom EmailFinisher that handles message field
-              implementationClassName: 'Kitzberger\FormMailtext\Domain\Finishers\EmailFinisher'
               options:
                 templateRootPaths:
                   20: 'EXT:form_mailtext/Resources/Private/Frontend/Templates/Finishers/Email/'
@@ -52,7 +48,7 @@ TYPO3:
                       editors:
                         220:
                           identifier: 'message'
-                          templateName: 'Inspector-TextEditor'
+                          templateName: 'Inspector-TextareaEditor'
                           label: 'formEditor.elements.Form.finisher.EmailToSender.editor.message.label'
                           propertyPath: 'options.message'
                           enableFormelementSelectionButton: true
@@ -62,7 +58,7 @@ TYPO3:
                       editors:
                         220:
                           identifier: 'message'
-                          templateName: 'Inspector-TextEditor'
+                          templateName: 'Inspector-TextareaEditor'
                           label: 'formEditor.elements.Form.finisher.EmailToReceiver.editor.message.label'
                           propertyPath: 'options.message'
                           enableFormelementSelectionButton: true
