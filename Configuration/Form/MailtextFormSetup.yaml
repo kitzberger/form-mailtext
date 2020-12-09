@@ -52,7 +52,7 @@ TYPO3:
                       editors:
                         220:
                           identifier: 'message'
-                          templateName: 'Inspector-TextEditor'
+                          templateName: 'Inspector-TextareaEditor'
                           label: 'formEditor.elements.Form.finisher.EmailToSender.editor.message.label'
                           propertyPath: 'options.message'
                           enableFormelementSelectionButton: true
@@ -62,7 +62,7 @@ TYPO3:
                       editors:
                         220:
                           identifier: 'message'
-                          templateName: 'Inspector-TextEditor'
+                          templateName: 'Inspector-TextareaEditor'
                           label: 'formEditor.elements.Form.finisher.EmailToReceiver.editor.message.label'
                           propertyPath: 'options.message'
                           enableFormelementSelectionButton: true
