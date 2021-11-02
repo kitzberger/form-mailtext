@@ -42,5 +42,7 @@ you've selected {if:singleselect-1:=:}nothing{endif}{if:singleselect-1:=:1}apple
 
 And your other input is within an array: {if:multiselect-1:in:cat,dog,hamster}it's a pet{endif}
 
+Apparently you like {if:selectsingle-1:=:1}bikes{else}walking{endif}
+
 Good bye.
 ```

@@ -55,6 +55,9 @@ class EmailFinisher extends \TYPO3\CMS\Form\Domain\Finishers\EmailFinisher
                 $operation  = $match[2];
                 $operandTwo = $match[3];
 
+                list($thenValue, $elseValue) = GeneralUtility::trimExplode('{else}', $match[4], true);
+                #debug([$thenValue, $elseValue]);
+
                 if (isset($formValues[$operandOne])) {
                     $operandOneValue = $formValues[$operandOne];
                 }
@@ -69,28 +72,28 @@ class EmailFinisher extends \TYPO3\CMS\Form\Domain\Finishers\EmailFinisher
                     case '==':
                     case '===':
                         if ($operandOneValue == $operandTwoValue) {
-                            return $match[4];
+                            return $thenValue;
                         }
-                        return '';
+                        return $elseValue ?? '';
                     case '>':
                     case '&gt;':
                         if ($operandOneValue > $operandTwoValue) {
-                            return $match[4];
+                            return $thenValue;
                         }
-                        return '';
+                        return $elseValue ?? '';
                     case '<':
                     case '&lt;':
                         if ($operandOneValue < $operandTwoValue) {
-                            return $match[4];
+                            return $thenValue;
                         }
-                        return '';
+                        return $elseValue ?? '';
                     case '!=':
                     case '<>':
                     case '&lt;&gt;':
                         if ($operandOneValue != $operandTwoValue) {
-                            return $match[4];
+                            return $thenValue;
                         }
-                        return '';
+                        return $elseValue ?? '';
                     case 'in':
                         // example: {if:multicheckbox-1:in:dog,cat}
 
@@ -101,10 +104,11 @@ class EmailFinisher extends \TYPO3\CMS\Form\Domain\Finishers\EmailFinisher
 
                         foreach ($operandOneValue as $value) {
                             if (in_array($value, $operandTwoValue)) {
-                                return $match[4];
+                                return $thenValue;
                             }
                         }
-                        return '';
+
+                        return $elseValue ?? '';
                 }
             },
             $message
