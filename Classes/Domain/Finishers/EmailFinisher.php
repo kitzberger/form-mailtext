@@ -2,6 +2,7 @@
 declare(strict_types = 1);
 namespace Kitzberger\FormMailtext\Domain\Finishers;
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 use TYPO3\CMS\Form\Domain\Runtime\FormRuntime;
 
@@ -32,7 +33,7 @@ class EmailFinisher extends \TYPO3\CMS\Form\Domain\Finishers\EmailFinisher
     private function replaceIfs($message, $formValues)
     {
         return preg_replace_callback(
-            '/{if:([a-z0-9\-_]+):(.+):([a-z0-9\-_]*)}(.*)({endif})/sU',
+            '/{if:([a-z0-9\-_]+):([^:]+):([a-z0-9\-_,]*)}(.*)({endif})/sU',
             function($match) use ($formValues) {
                 #debug($match, 'a match!');
 
@@ -55,31 +56,41 @@ class EmailFinisher extends \TYPO3\CMS\Form\Domain\Finishers\EmailFinisher
                     case '===':
                         if ($operandOneValue == $operandTwoValue) {
                             return $match[4];
-                        } else {
-                            return '';
                         }
+                        return '';
                     case '>':
                     case '&gt;':
                         if ($operandOneValue > $operandTwoValue) {
                             return $match[4];
-                        } else {
-                            return '';
                         }
+                        return '';
                     case '<':
                     case '&lt;':
                         if ($operandOneValue < $operandTwoValue) {
                             return $match[4];
-                        } else {
-                            return '';
                         }
+                        return '';
                     case '!=':
                     case '<>':
                     case '&lt;&gt;':
                         if ($operandOneValue != $operandTwoValue) {
                             return $match[4];
-                        } else {
-                            return '';
                         }
+                        return '';
+                    case 'in':
+                        // example: {if:multicheckbox-1:in:dog,cat}
+
+                        if (!is_array($operandOneValue)) {
+                            $operandOneValue = [$operandOneValue];
+                        }
+                        $operandTwoValue = GeneralUtility::trimExplode(',', $operandTwoValue, true);
+
+                        foreach ($operandOneValue as $value) {
+                            if (in_array($value, $operandTwoValue)) {
+                                return $match[4];
+                            }
+                        }
+                        return '';
                 }
             },
             $message
