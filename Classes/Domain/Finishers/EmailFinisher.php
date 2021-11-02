@@ -32,7 +32,7 @@ class EmailFinisher extends \TYPO3\CMS\Form\Domain\Finishers\EmailFinisher
     private function replaceIfs($message, $formValues)
     {
         return preg_replace_callback(
-            '/{if:([a-z0-9\-_]+):(.+):([a-z0-9\-_]+)}(.*)({endif})/sU',
+            '/{if:([a-z0-9\-_]+):(.+):([a-z0-9\-_]*)}(.*)({endif})/sU',
             function($match) use ($formValues) {
                 #debug($match, 'a match!');
 
