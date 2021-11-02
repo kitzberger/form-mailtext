@@ -2,6 +2,7 @@
 declare(strict_types = 1);
 namespace Kitzberger\FormMailtext\Domain\Finishers;
 
+use TYPO3\CMS\Core\Mail\FluidEmail;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 use TYPO3\CMS\Form\Domain\Runtime\FormRuntime;
@@ -28,6 +29,19 @@ class EmailFinisher extends \TYPO3\CMS\Form\Domain\Finishers\EmailFinisher
         $standaloneView->assign('message', $message);
 
         return $standaloneView;
+    }
+
+    protected function initializeFluidEmail(FormRuntime $formRuntime): FluidEmail
+    {
+        $fluidEmail = parent::initializeFluidEmail($formRuntime);
+
+        $message = $this->parseOption('message');
+        $formValues = $formRuntime->getFormState()->getFormValues();
+		$message = $this->replaceIfs($message, $formValues);
+
+        $fluidEmail->assign('message', $message);
+
+        return $fluidEmail;
     }
 
     private function replaceIfs($message, $formValues)
@@ -94,6 +108,6 @@ class EmailFinisher extends \TYPO3\CMS\Form\Domain\Finishers\EmailFinisher
                 }
             },
             $message
-        );
-    }
+		);
+	}
 }
