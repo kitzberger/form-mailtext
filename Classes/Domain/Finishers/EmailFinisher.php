@@ -2,6 +2,7 @@
 declare(strict_types = 1);
 namespace Kitzberger\FormMailtext\Domain\Finishers;
 
+use TYPO3\CMS\Core\Mail\FluidEmail;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 use TYPO3\CMS\Form\Domain\Runtime\FormRuntime;
 
@@ -20,5 +21,14 @@ class EmailFinisher extends \TYPO3\CMS\Form\Domain\Finishers\EmailFinisher
         $standaloneView->assign('message', $this->parseOption('message'));
 
         return $standaloneView;
+    }
+
+    protected function initializeFluidEmail(FormRuntime $formRuntime): FluidEmail
+    {
+        $fluidEmail = parent::initializeFluidEmail($formRuntime);
+
+        $fluidEmail->assign('message', $this->parseOption('message'));
+
+        return $fluidEmail;
     }
 }
