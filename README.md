@@ -28,3 +28,21 @@ module.tx_form {
     }
 }
 ```
+
+## Mail text
+
+Within the mail text you can output any user input using the identifier of the input field, e.g. `{text-1}`.
+
+Additionally there's an **experimental feature** enabling you to use `if` like control flows:
+
+```
+Hi {text-1},
+
+you've selected {if:singleselect-1:=:}nothing{endif}{if:singleselect-1:=:1}apple{endif}{if:singleselect-1:=:2}orange{endif}{if:singleselect-1:=:3}banana{endif}.
+
+And your other input is within an array: {if:multiselect-1:in:cat,dog,hamster}it's a pet{endif}
+
+Apparently you like {if:selectsingle-1:=:1}bikes{else}walking{endif}
+
+Good bye.
+```
