@@ -4,7 +4,7 @@
   "description": "TYPO3 Form: Mailtexts via plugin",
   "homepage": "https://github.com/kitzberger/form-mailtext",
   "license": [
-    "GPL-2.0+"
+    "GPL-2.0-or-later"
   ],
   "keywords": [
     "TYPO3 CMS"
