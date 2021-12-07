@@ -17,5 +17,10 @@
     "psr-4": {
       "Kitzberger\\FormMailtext\\": "Classes/"
     }
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "form_mailtext"
+    }
   }
 }
