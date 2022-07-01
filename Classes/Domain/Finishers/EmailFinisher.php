@@ -9,7 +9,6 @@ use TYPO3\CMS\Form\Domain\Runtime\FormRuntime;
 
 class EmailFinisher extends \TYPO3\CMS\Form\Domain\Finishers\EmailFinisher
 {
-    
     /**
      * @param FormRuntime $formRuntime
      * @param string $format
@@ -45,12 +44,13 @@ class EmailFinisher extends \TYPO3\CMS\Form\Domain\Finishers\EmailFinisher
         return $fluidEmail;
     }
 
-    protected function parseMessage() {
-	$message = $this->parseOption('message');
-	if(null === $message || $message === '') {
-	   $message = '{variables}';
-	}
-	return $message;
+    protected function parseMessage()
+    {
+        $message = $this->parseOption('message');
+        if (empty($message)) {
+            $message = '{variables}';
+        }
+        return $message;
     }
 
 
