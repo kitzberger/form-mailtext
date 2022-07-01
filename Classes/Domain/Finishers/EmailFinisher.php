@@ -9,6 +9,7 @@ use TYPO3\CMS\Form\Domain\Runtime\FormRuntime;
 
 class EmailFinisher extends \TYPO3\CMS\Form\Domain\Finishers\EmailFinisher
 {
+    
     /**
      * @param FormRuntime $formRuntime
      * @param string $format
@@ -19,7 +20,7 @@ class EmailFinisher extends \TYPO3\CMS\Form\Domain\Finishers\EmailFinisher
     {
         $standaloneView = parent::initializeStandaloneView($formRuntime, $format);
 
-        $message = $this->parseOption('message');
+        $message = $this->parseMessage();
         $formValues = $formRuntime->getFormState()->getFormValues();
         #debug($formValues, 'formValues');
         #debug($message, 'message (before)');
@@ -35,7 +36,7 @@ class EmailFinisher extends \TYPO3\CMS\Form\Domain\Finishers\EmailFinisher
     {
         $fluidEmail = parent::initializeFluidEmail($formRuntime);
 
-        $message = $this->parseOption('message');
+        $message = $this->parseMessage();
         $formValues = $formRuntime->getFormState()->getFormValues();
 		$message = $this->replaceIfs($message, $formValues);
 
@@ -43,6 +44,15 @@ class EmailFinisher extends \TYPO3\CMS\Form\Domain\Finishers\EmailFinisher
 
         return $fluidEmail;
     }
+
+    protected function parseMessage() {
+	$message = $this->parseOption('message');
+	if(null === $message || $message === '') {
+	   $message = '{variables}';
+	}
+	return $message;
+    }
+
 
     private function replaceIfs($message, $formValues)
     {
