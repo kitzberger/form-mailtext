@@ -7,11 +7,11 @@ $EM_CONF[$_EXTKEY] = [
 	'author' => 'Philipp Kitzberger',
 	'author_email' => 'typo3@kitze.net',
 	'author_company' => '',
-	'version' => '2.1.3',
+	'version' => '3.0.0',
 	'constraints' => [
 		'depends' => [
-			'typo3' => '10.4.11-11.5.99',
-			'form' => '10.4.11-11.5.99',
+			'typo3' => '10.4.11-12.4.99',
+			'form' => '10.4.11-12.4.99',
 		],
 		'conflicts' => [],
 		'suggests' => [],
