@@ -65,8 +65,9 @@ class EmailFinisher extends \TYPO3\CMS\Form\Domain\Finishers\EmailFinisher
                 $operation  = $match[2];
                 $operandTwo = $match[3];
 
-                list($thenValue, $elseValue) = GeneralUtility::trimExplode('{else}', $match[4], true);
-                #debug([$thenValue, $elseValue]);
+                $thenElse = GeneralUtility::trimExplode('{else}', $match[4], true);
+                $thenValue = $thenElse[0];
+                $elseValue = $thenElse[1] ?? null;
 
                 if (isset($formValues[$operandOne])) {
                     $operandOneValue = $formValues[$operandOne];
