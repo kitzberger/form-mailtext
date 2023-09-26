@@ -71,6 +71,9 @@ class EmailFinisher extends \TYPO3\CMS\Form\Domain\Finishers\EmailFinisher
 
                 if (isset($formValues[$operandOne])) {
                     $operandOneValue = $formValues[$operandOne];
+                } else {
+                    #debug($formValues);
+                    throw new \Exception('This field identifier does not exist: ' . $operandOne);
                 }
                 if (isset($formValues[$operandTwo])) {
                     $operandTwoValue = $formValues[$operandTwo];
