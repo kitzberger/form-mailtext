@@ -1,0 +1,14 @@
+plugin.tx_form {
+    settings {
+        yamlConfigurations {
+            100 = EXT:form_mailtext/Configuration/Form/MailtextFormSetup.yaml
+        }
+    }
+}
+module.tx_form {
+    settings {
+        yamlConfigurations {
+            100 = EXT:form_mailtext/Configuration/Form/MailtextFormSetup.yaml
+        }
+    }
+}

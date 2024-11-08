@@ -1,0 +1,4 @@
+name: kitzberger/form-mailtext
+label: "Form: Mail Text"
+dependencies:
+  - typo3/form
