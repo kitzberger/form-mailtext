@@ -18,7 +18,7 @@ call_user_func(function () {
         'module.tx_form {
     settings {
         yamlConfigurations {
-            100 = EXT:form_mailtext/Configuration/Form/MailtextFormSetup.yaml
+            105 = EXT:form_mailtext/Configuration/Form/MailtextFormSetup.yaml
         }
     }
 }'
